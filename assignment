@@ -1,0 +1,59 @@
+#define function to welcome user
+def student_report_card():
+        entry = int(input('''1. create a new student record, 
+        2. delete student record based on roll number, 
+        3. modify the marks ,
+        4. display all students records, 
+        5. display students record based on roll number
+        Enter your entry here'''))
+
+        return entry
+
+#define function phone_book
+def report_card():
+    studentDetails = {} #initiate empty numbers dictionary to store values
+
+    while True: #initiate while loop to continuously run program
+        entry = student_report_card()
+        if entry == 1:
+            #check if studentDetails is empty, if not empty print current student list
+            if bool(studentDetails) != False:
+                for k,v in studentDetails.items():
+                    print(k,'-',v)
+            else:
+                print('You have an empty student report. Add a new student report by going back to menu')
+        elif entry == 2:
+            student_name = input('Please name of student:')
+            roll_no = input('Please give roll number: ')
+            maths_marks = input('enter maths marks:')
+            physics_marks = input('enter physics marks:')
+            chemistry_marks = input('enter chemistry marks:')
+            english_marks = input('enter english marks:')
+            programming_marks = input('enter programming marks:')
+            
+            if student_name not in studentDetails.items():
+                studentDetails.update({student_name : roll_no : maths_marks : physics_marks : chemistry_marks :
+                english_marks : programming_marks})
+                print('Student details saved successfully')
+            else:
+                print('This contact alredy exists in your phone book.')
+        elif entry == 3:
+            name = input('Enter the name of contact you wish to delete:')
+            if name in report_card:
+                print('The contact name is',report_card[name])
+            else:
+                print('the contact does not exist.')
+            del numbers[name]
+        elif entry == 4:
+            name = input('Enter the name of contact you wish to find:')
+            if numbers.get(name):
+                print(numbers[name])
+            else:
+                print("The contact does not exist.")
+        elif entry == 5:
+            number = input('Enter the number of contact:')
+            for k,v in numbers.items():
+                if number ==v:
+                    print(k)
+        
+phone_book()
